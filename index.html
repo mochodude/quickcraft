@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5160,7 +5159,7 @@ function mpHandle(m){
    if(m.obj)addItem(m.type,m.count,m.obj);else addItem(m.type,m.count);
    break;
   }
-  case 'hurt':if(inGame&&!survival.dead&&gameMode!=='creative')damagePlayer(m.dmg,'being hit by '+m.by);break;
+  case 'hurt':mpHurt(m);break;
  }
 }
 
@@ -5199,6 +5198,16 @@ function mpWelcome(m){
 }
 
 let dropSeq=0,mpNetSpawn=false;
+// Knockback from a player hit: pushed away from the attacker for a fraction of a second.
+let mpKb={x:0,z:0,t:0};
+function mpHurt(m){
+ if(!inGame||survival.dead||gameMode==='creative')return;
+ damagePlayer(m.dmg,'being hit by '+m.by);
+ if(survival.dead||typeof m.ax!=='number'||typeof m.az!=='number')return;
+ const dx=player.x-m.ax,dz=player.z-m.az,len=Math.hypot(dx,dz)||1;
+ mpKb={x:dx/len*8,z:dz/len*8,t:.3};
+ if(player.grounded)player.vy=4.5;
+}
 // An item another player dropped (or one that was already on the ground when we joined).
 function mpRemoteDrop(m){
  if(droppedItems.some(d=>d.netId===m.id))return;
@@ -5393,6 +5402,7 @@ function animate(now=0){
   const speed=creative?(wet?6:9):(wingEquipped&&fairyFlightTimer>0?8.2:wet?3.2:survival.sprinting?8:5);
   const oldX=player.x,oldZ=player.z;
   if(moving){dx/=len;dz/=len;moveHorizontal(dx*speed*dt,dz*speed*dt);}
+  if(mpKb.t>0){const f=mpKb.t/.3;mpKb.t=Math.max(0,mpKb.t-dt);moveHorizontal(mpKb.x*f*dt,mpKb.z*f*dt);}
   const pushedBack=moving&&Math.hypot(player.x-oldX,player.z-oldZ)<speed*dt*.5;
   moving=Math.hypot(player.x-oldX,player.z-oldZ)>.001;
   const climbing=onLadder();
