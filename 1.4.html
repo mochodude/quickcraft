@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2083,6 +2082,7 @@ function buildArmourMats(){
 }
 
 const BLOCK_FILE_SRC={
+  torch:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAcklEQVR42mNgGAWDHPy/wfD/fz/Df/IN+D/9//////EawIJPckHDToZzN+bjtYQJn+S3b98YXrz7Qb4BXFxcDG8/fCHfAAYGBgZhAR7KvEAI4DXgxqMPDC9evyffACMNKYZ///6Rb8C5G88Y/vz5g9cAAAHzKy5ZekwKAAAAAElFTkSuQmCC',
   oak_door_top:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABMUlEQVR42qWSMUvDQBiGn8YI1YrKHaaOHSwUJLj5G1y6uftf+gdcXPwDXVzESSjO6lhUlCpStAWb0jPGRLtInS4mbS6gvssdDx8fx3Nv4fRgb6KUAkAIQTJKqVz22H3CVkrhByFAfCaTx9oPQ2whBH4Q0rp8xpHF1ODWxpqR69j64sgih8fXheRgs1GfmLgfhHijMdbF5zamrJTmcrlblVivvY5xwVv0lcsHKqKgn/OiPqhVnHi7HrrrepncD8K0xKv7EQMVzcgycQBvNP6fRLcqsXSJ/iJxoCKs6ab9RmKqB2VRotmoT6ZlmfiMg1rFiQf0r+TxdbGIW5U/C45at5mVNXHtwNYSHVlMdRxgdXkpxb3yLgA3vT6b8+cAWJ2FnUxR+qnJDHt92if7yPez2ME3+EfFfLBwVS4AAAAASUVORK5CYII=',
   spruce_door_top:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABeklEQVR42o2SQUsjQRCFv+1MDabDBHdDkLh7FwQvOXjIRf/S/pwF/4gHCYJ/QMzFw24ILI4Sg+KQ2jAVcQ+hJz0mslunoqh+9d7r9+nH99O3fKb0Op7Lm9+cHH0D+O8+yWcKQD5TTI1xruykYGrkM2VRUpsDjHOlsCXFU4HrdTwAixLES7UUqrAl4oWPym0bTudLAO6eXmpAi3LdZ5KsAM6u5gwnTZ53+wAMJ01eu8eIF25f9njtHgMwesyqnbhPBoMBf36d05gWABy0H2hMC0yNg87DP+fu0F0jqafbSjC1qhcv7H9ub51/abWxUj/2IGgNXsRlajWjNwCCOQBWagWSSVIDlNSvATJJqqvB5bjCNwba8a4LQYofBRaSeqzUDdrxjut1/Cp5pdaCZGob+iX1iJfaMfdeU5y+biupSQhXrVzH2m0zL2YQA2/7KTfOVx4ExOl8WZkFVCzCTgAOMtzFzzeGkyb3vo+pMXrMcF9Pq1jf+/5GH0f8L0wr2DfANJenAAAAAElFTkSuQmCC',
   jungle_door_top:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB5UlEQVR42pWSQWsTURSFvwkpGZNO6IQ4zaI1NQjiqpu6ieBKBBH8D9KN2D8gupcutRv9AaKbCi4KYkGk6qbETbuoLUjIJIXMjGMmZJLhDVmMi+Q9J6Qbz+Y97r3v3nfOPdrBzlYCYJYM0gh6IRfF07l3e9/JApycnrFctijoOQCa5x1qK6sAdIfRXGwkYsJhAEDWLBnk9QX12PEdbC8EOtMTqpaB7YXkdYdKuTKtNVkq9iY/qJQrqnMkxgDYXsj27qEG8OjuegIQiTEjEVPQc2pgZvPlZ8XN9T31sGr9475+7TKv94802wtxfW9Gj0y9Xlcc01Nv1TdUkbxv7x5qkpZqsHnzEiMRK4H+Fxn59ZGIZxLdtju3NomRiGmed+gPBNrBzlby8esPlbx3ewOzZNBtu+iL+bn72w9f6A+EqteO3zxJ0hNarSYAP9u9mak3rpQAWFurqdjJ6RnZoBfSajXVKo1FE9f3lJgSrx7fSZbLFmIYKbpHv35PNEhDrvLT84eJjEm7S4TDQPkgK6dK5PUFJZR8KKZ2lpD1S0V9YmUxjHB8R9GQ+OMHF66uoOcUDUVBiia7px1X0HPYXsi+V+TFN4en749TRppaOW3dqmVQW1md8TxAo9HgwdUxz+5fB6A/EPwFv5XlEVDpIRoAAAAASUVORK5CYII=',
@@ -2255,7 +2255,12 @@ function applyBlockFiles(){
  // GUI and map backgrounds
  if(has('furnace_menu')){const el=document.getElementById('furnacePanel');if(el){el.style.backgroundImage='url('+BLOCK_FILE_SRC.furnace_menu+')';el.style.backgroundSize='100% 100%';el.style.imageRendering='pixelated';}}
  if(has('map_background')){const el=document.getElementById('mapPanel');if(el){el.style.backgroundImage='url('+BLOCK_FILE_SRC.map_background+')';el.style.backgroundRepeat='repeat';}}
-// Chest faces
+// Torch: the stick and the flame come from the torch image (stick below, flame at the top)
+ if(has('torch')&&materials.torchWood&&materials.flame){
+  materials.torchWood.map=fileTexture(regionCanvas(F.torch,6,8,4,8));materials.torchWood.needsUpdate=true;
+  materials.flame.map=fileTexture(regionCanvas(F.torch,6,5,4,4));materials.flame.color.set(0xffffff);materials.flame.needsUpdate=true;
+ }
+ // Chest faces
  if(has('chest_top'))redrawTexture(chestTop,F.chest_top);
  if(has('chest_front'))redrawTexture(chestFront,F.chest_front);
  // Lantern: the file holds three flame frames that the game cycles through
